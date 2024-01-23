@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.video-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chapter-list {
+  height: 300px; 
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
