@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import Video from './video/video';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
       <div>
           <h1>Video reader </h1>
-          <p>Video player</p>
+          <Video />
           <p>Chapter list</p>
           <p>Map</p>
           <p>KeyWord display</p>

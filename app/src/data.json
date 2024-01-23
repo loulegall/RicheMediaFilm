@@ -1,0 +1,21 @@
+{
+    "Film": {
+        "file_url": "https://archive.org/download/Route_66_-_an_American_badDream/Route_66_-_an_American_badDream_512kb.mp4",
+        "title": "Route 66, An American (Bad) Dream",
+        "synopsis_url": "https://wiki.creativecommons.org/wiki/Route_66_-_An_American_(bad)_Dream"
+    },
+    "Chapters": [
+        {
+            "pos": "0",
+            "title": "Start"
+        },
+        {
+            "pos": "45",
+            "title": "Intro"
+        },
+        {
+            "pos": "117",
+            "title": "New Mexico"
+        }
+    ]
+}
