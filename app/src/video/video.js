@@ -1,6 +1,6 @@
 // Video.js
 import React, { useRef, useState } from 'react';
-import { Player, ControlBar, PlayToggle, ProgressControl } from 'video-react';
+import { Player } from 'video-react';
 import ChapterList from './chapterList';
 import KeywordList from './keywordList';
 import data from '../data.json';
