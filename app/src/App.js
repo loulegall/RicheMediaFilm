@@ -3,6 +3,8 @@ import Displayer from './chat/displayer';
 import Sender from './chat/sender';
 import Receiver from './chat/receiver';
 import Video from './video/video';
+import './App.css';
+import MyMapComponent from './map';
 
 function App() {
   const [ws, setWs] = useState(null);  // Ajoutez cette ligne
@@ -27,6 +29,7 @@ function App() {
           <Video />
           <p>Chapter list</p>
           <p>Map</p>
+          <MyMapComponent />
           <p>KeyWord display</p>
         </div>
         <div>
