@@ -1,6 +1,7 @@
 // displayer.js
 import React from 'react';
-
+// TODO : afficher les messages dans le bon ordre.
+// TODO : afficher les messages dans le bon format
 const Displayer = ({ messages }) => {
     console.log("messages:", messages[0]);
   return (
