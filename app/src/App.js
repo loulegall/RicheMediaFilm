@@ -1,24 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Displayer from './chat/displayer';
 import Sender from './chat/sender';
-import Receiver from './chat/receiver';
 import Video from './video/video';
 
-function App() {
-  const [ws, setWs] = useState(null);  // Ajoutez cette ligne
+const URL = "wss://imr3-react.herokuapp.com";
 
+function App() {
+  const [ws, setWs] = useState(null);
+  const [, setConnected] = useState(false);
   const [chatMessages, setChatMessages] = useState([]);
 
-  const addChatMessage = (message) => {
-    setChatMessages((prevMessages) => [...prevMessages, message]);
-  };
+  useEffect(() => {
+    // Instancier un client WebSocket lors du montage du composant
+    const webSocket = new WebSocket(URL);
+
+    // Cyle de vie du client WebSocket
+    webSocket.onopen = () => {
+      console.log("connected");
+      setConnected(true);
+    };
+
+    webSocket.onmessage = (evt) => {
+      const messages = JSON.parse(evt.data);
+      setChatMessages((prevMessages) => [...prevMessages, ...messages]);
+    };
+
+    webSocket.onclose = () => {
+      console.log("disconnected, reconnect.");
+      setConnected(false);
+      setTimeout(() => {
+        setWs(new WebSocket(URL));
+      }, 5000);
+    };
+
+    // Fermer la connexion WebSocket lors du démontage du composant
+    return () => {
+      webSocket.close();
+    };
+  }, []); // Le tableau vide signifie que ce hook ne s'exécute qu'une seule fois lors du montage initial.
+
 
   const submitChatMessage = (messageString) => {
-    const message = { name: 'Your Name', message: messageString };
-    // Assuming that ws is available globally or managed by some state management solution
+    const message = { name: 'TestName', message: messageString }; // Remplacez 'Maxou' par le nom d'utilisateur approprié
     ws.send(JSON.stringify(message));
   };
- 
+
   return (
     <div className="App">
       <header className="App-header">
@@ -32,8 +58,7 @@ function App() {
         <div>
           <h1>Chat</h1>
           <Displayer messages={chatMessages} />
-          <Sender onSubmitMessage={submitChatMessage} />
-          <Receiver onMessageReceived={addChatMessage} />
+          <Sender submitMessage={submitChatMessage} />
         </div>
       </header>
     </div>

@@ -1,19 +1,23 @@
 // displayer.js
 import React from 'react';
-// TODO : afficher les messages dans le bon ordre.
-// TODO : afficher les messages dans le bon format
+
 const Displayer = ({ messages }) => {
-    console.log("messages:", messages[0]);
+  // Filtrer les messages ayant un timestamp supérieur au moment actuel
+  const currentTimestamp = Date.now();
+  const filteredMessages = messages.filter((message) => message.when <= currentTimestamp);
+
+  // Triez les messages filtrés par ordre croissant en fonction de la propriété "when"
+  const sortedMessages = [...filteredMessages].sort((a, b) => a.when - b.when);
+
   return (
     <div>
       <h2>Chat Messages</h2>
       <ul>
-        {messages[0].map((message, index) => (
-            
+        {sortedMessages.map((message, index) => (
           <li key={index}>
             <strong>{message.name}: </strong>
             <p>{message.message}</p>
-            <p>{message.when}</p>
+            <p>{new Date(message.when).toLocaleString()}</p>
             {message.content}
           </li>
         ))}

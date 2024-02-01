@@ -1,12 +1,16 @@
 // sender.js
 import React, { useState } from 'react';
 
-const Sender = ({ onSubmitMessage }) => {
+const Sender = ({ submitMessage }) => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmitMessage(message);
+
+    // Utilisez la fonction submitMessage avec le nouveau format d'envoi
+    submitMessage(message);
+    
+    // Réinitialisez le champ de message
     setMessage('');
   };
 
