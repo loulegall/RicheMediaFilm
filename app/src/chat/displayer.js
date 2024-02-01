@@ -6,8 +6,31 @@ const Displayer = ({ messages }) => {
   const currentTimestamp = Date.now();
   const filteredMessages = messages.filter((message) => message.when <= currentTimestamp);
 
-  // Triez les messages filtrés par ordre croissant en fonction de la propriété "when"
   const sortedMessages = [...filteredMessages].sort((a, b) => a.when - b.when);
+
+  const renderClickableNumbers = (text) => {
+    const regex = /\b\d+\b/g;
+    const matches = text.match(regex);
+
+    if (!matches) {
+      return text;
+    }
+
+    // Remplacez les nombres par des boutons cliquables avec le nombre affiché
+    return text.split(regex).map((part, index) => (
+      index % 2 === 0 ? (
+        <span key={index}>{part}</span>
+      ) : (
+        <button key={index} onClick={() => handleNumberClick(part)}>
+          {matches}
+        </button>
+      )
+    ));
+  };
+
+  const handleNumberClick = (number) => {
+    console.log(`Number ${number} clicked!`);
+  };
 
   return (
     <div>
@@ -16,7 +39,7 @@ const Displayer = ({ messages }) => {
         {sortedMessages.map((message, index) => (
           <li key={index}>
             <strong>{message.name}: </strong>
-            <p>{message.message}</p>
+            <p>{renderClickableNumbers(message.message)}</p>
             <p>{new Date(message.when).toLocaleString()}</p>
             {message.content}
           </li>
