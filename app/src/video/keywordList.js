@@ -7,7 +7,7 @@ const KeywordList = ({ currentPosition }) => {
   useEffect(() => {
     const updateKeywords = () => {
       const keywords = data.Keywords.filter((keyword) => parseFloat(keyword.pos) <= currentPosition);
-      console.log("keywords:", keywords);
+      //console.log("keywords:", keywords);
       if (keywords.length > 0) {
         setCurrentKeywords(keywords[keywords.length - 1].data);
       } else {

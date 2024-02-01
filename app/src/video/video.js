@@ -1,14 +1,14 @@
-// Video.js
 import React, { useRef, useState } from 'react';
 import { Player } from 'video-react';
 import ChapterList from './chapterList';
 import KeywordList from './keywordList';
 import data from '../data.json';
+import MyMapComponent from '../map';
 
 import 'video-react/dist/video-react.css';
 
 const Video = () => {
-  const playerRef = useRef(null);
+  const playerRef = useRef(null); 
   const [currentPosition, setCurrentPosition] = useState(0);
 
   const getFilmURL = () => {
@@ -25,7 +25,8 @@ const Video = () => {
     <div className="video-container">
       <Player ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate}>
       </Player>
-      <ChapterList onChapterClick={(pos) => playerRef.current.seek(parseFloat(pos))} />
+      <ChapterList onChapterClick={(pos) => playerRef.current.seek(pos)} />
+      <MyMapComponent onMarkerClick={(timestamp) => playerRef.current.seek(timestamp)} />
       <KeywordList currentPosition={currentPosition} />
     </div>
   );

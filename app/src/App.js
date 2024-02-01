@@ -29,14 +29,13 @@ function App() {
           <Video />
           <p>Chapter list</p>
           <p>Map</p>
-          <MyMapComponent />
           <p>KeyWord display</p>
         </div>
         <div>
           <h1>Chat</h1>
           {/*<Displayer messages={chatMessages} />*/}
           <Sender onSubmitMessage={submitChatMessage} />
-          <Receiver onMessageReceived={addChatMessage} />
+          {/*<Receiver onMessageReceived={addChatMessage} />*/}
         </div>
       </header>
     </div>
