@@ -34,7 +34,7 @@ function App() {
         </div>
         <div>
           <h1>Chat</h1>
-          <Displayer messages={chatMessages} />
+          {/*<Displayer messages={chatMessages} />*/}
           <Sender onSubmitMessage={submitChatMessage} />
           <Receiver onMessageReceived={addChatMessage} />
         </div>
