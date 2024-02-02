@@ -1,13 +1,12 @@
 // Video.js
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Player } from 'video-react';
 import ChapterList from './chapterList';
 import KeywordList from './keywordList';
 import data from '../data.json';
-
 import 'video-react/dist/video-react.css';
 
-const Video = () => {
+const Video = ({ clickedNumber }) => {
   const playerRef = useRef(null);
   const [currentPosition, setCurrentPosition] = useState(0);
 
@@ -20,6 +19,13 @@ const Video = () => {
       setCurrentPosition(Math.floor(event.target.currentTime));
     }
   };
+
+  useEffect(() => {
+    if (clickedNumber !== null && !isNaN(parseFloat(clickedNumber))) {
+      setCurrentPosition(parseFloat(clickedNumber));
+      playerRef.current.seek(parseFloat(clickedNumber));
+    }
+  }, [clickedNumber]);
 
   return (
     <div className="video-container">

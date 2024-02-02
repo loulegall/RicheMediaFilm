@@ -9,6 +9,7 @@ function App() {
   const [ws, setWs] = useState(null);
   const [, setConnected] = useState(false);
   const [chatMessages, setChatMessages] = useState([]);
+  const [clickedNumber, setClickedNumber] = useState(0);
 
   useEffect(() => {
     // Instancier un client WebSocket lors du montage du composant
@@ -41,23 +42,22 @@ function App() {
 
 
   const submitChatMessage = (messageString) => {
-    const message = { name: 'TestName', message: messageString }; // Remplacez 'Maxou' par le nom d'utilisateur approprié
+    const message = { name: 'TestName', message: messageString }; 
     ws.send(JSON.stringify(message));
   };
 
+  const handleNumberClick = (number) => {
+    setClickedNumber(number); // Mettez à jour la state avec le numéro cliqué
+  };
+  
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <h1>Video reader </h1>
-          <Video />
-          <p>Chapter list</p>
-          <p>Map</p>
-          <p>KeyWord display</p>
+          <Video clickedNumber={clickedNumber ?? 100} />
         </div>
         <div>
-          <h1>Chat</h1>
-          <Displayer messages={chatMessages} />
+          <Displayer messages={chatMessages} onNumberClick={handleNumberClick} />
           <Sender submitMessage={submitChatMessage} />
         </div>
       </header>

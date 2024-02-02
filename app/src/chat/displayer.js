@@ -1,18 +1,22 @@
 // displayer.js
 import React from 'react';
 
-const Displayer = ({ messages }) => {
-  // Filtrer les messages ayant un timestamp supérieur au moment actuel
+const Displayer = ({ messages, onNumberClick }) => {
   const currentTimestamp = Date.now();
-  const filteredMessages = messages.filter((message) => message.when <= currentTimestamp);
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
+  const filteredMessages = messages.filter((message) => {
+    const messageDate = new Date(message.when);
+    return messageDate >= oneYearAgo && messageDate <= currentTimestamp;
+  });
   const sortedMessages = [...filteredMessages].sort((a, b) => a.when - b.when);
 
   const renderClickableNumbers = (text) => {
     const regex = /\b\d+\b/g;
-    const matches = text.match(regex);
+    const numberMatched = text.match(regex);
 
-    if (!matches) {
+    if (!numberMatched) {
       return text;
     }
 
@@ -21,15 +25,14 @@ const Displayer = ({ messages }) => {
       index % 2 === 0 ? (
         <span key={index}>{part}</span>
       ) : (
-        <button key={index} onClick={() => handleNumberClick(part)}>
-          {matches}
+        <button key={index} onClick={() => handleNumberClick(numberMatched)}>
+          {numberMatched}
         </button>
       )
     ));
   };
-
   const handleNumberClick = (number) => {
-    console.log(`Number ${number} clicked!`);
+    onNumberClick(number);
   };
 
   return (
@@ -48,5 +51,4 @@ const Displayer = ({ messages }) => {
     </div>
   );
 };
-
 export default Displayer;
