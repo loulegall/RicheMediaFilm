@@ -22,22 +22,24 @@ function App() {
   };
  
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App min-h-screen flex flex-col lg:flex-row items-center justify-center">
+      {/* Video Section */}
+      <section className="lg:w-1/2 p-4">
         <div>
-          <h1>Video reader </h1>
+          <h1 className="text-2xl lg:text-3xl font-bold mb-4">Video Reader</h1>
           <Video />
-          <p>Chapter list</p>
-          <p>Map</p>
-          <p>KeyWord display</p>
         </div>
+      </section>
+
+      {/* Chat Section */}
+      <section className="lg:w-1/2 p-4">
         <div>
-          <h1>Chat</h1>
-          {/*<Displayer messages={chatMessages} />*/}
+          <h1 className="text-2xl lg:text-3xl font-bold mb-4">Chat</h1>
+          {/* <Displayer messages={chatMessages} /> */}
           <Sender onSubmitMessage={submitChatMessage} />
-          {/*<Receiver onMessageReceived={addChatMessage} />*/}
+          {/* <Receiver onMessageReceived={addChatMessage} /> */}
         </div>
-      </header>
+      </section>
     </div>
   );
 }

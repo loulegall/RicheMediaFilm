@@ -22,12 +22,23 @@ const Video = () => {
   };
 
   return (
-    <div className="video-container">
-      <Player ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate}>
-      </Player>
-      <ChapterList onChapterClick={(pos) => playerRef.current.seek(pos)} />
-      <MyMapComponent onMarkerClick={(timestamp) => playerRef.current.seek(timestamp)} />
-      <KeywordList currentPosition={currentPosition} />
+    <div >
+      {/* Video Player Section */}
+      <div>
+        <Player ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate}>
+        </Player>
+        <ChapterList onChapterClick={(pos) => playerRef.current.seek(pos)} />
+      </div>
+
+      {/* Map Section */}
+      <div>
+        <MyMapComponent onMarkerClick={(timestamp) => playerRef.current.seek(timestamp)} />
+      </div>
+
+      {/* Keywords Section */}
+      <div >
+        <KeywordList currentPosition={currentPosition} />
+      </div>
     </div>
   );
 };
