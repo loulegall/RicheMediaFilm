@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Displayer from './chat/displayer';
 import Sender from './chat/sender';
 import Video from './video/video';
+import './App.css';
+import MyMapComponent from './map';
 
 const URL = "wss://imr3-react.herokuapp.com";
 
@@ -54,9 +56,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
+          <h1 className="text-2xl lg:text-3xl font-bold mb-4">Video Reader</h1>
           <Video clickedNumber={clickedNumber ?? 100} />
+          <Video />
         </div>
         <div>
+          <h1 className="text-2xl lg:text-3xl font-bold mb-4">Chat</h1>
           <Displayer messages={chatMessages} onNumberClick={handleNumberClick} />
           <Sender submitMessage={submitChatMessage} />
         </div>

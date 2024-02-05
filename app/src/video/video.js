@@ -4,6 +4,8 @@ import { Player } from 'video-react';
 import ChapterList from './chapterList';
 import KeywordList from './keywordList';
 import data from '../data.json';
+import MyMapComponent from '../map';
+
 import 'video-react/dist/video-react.css';
 
 const Video = ({ clickedNumber }) => {
@@ -28,11 +30,23 @@ const Video = ({ clickedNumber }) => {
   }, [clickedNumber]);
 
   return (
-    <div className="video-container">
-      <Player ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate}>
-      </Player>
-      <ChapterList onChapterClick={(pos) => playerRef.current.seek(parseFloat(pos))} />
-      <KeywordList currentPosition={currentPosition} />
+    <div >
+      {/* Video Player Section */}
+      <div>
+        <Player ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate}>
+        </Player>
+        <ChapterList onChapterClick={(pos) => playerRef.current.seek(pos)} />
+      </div>
+
+      {/* Map Section */}
+      <div>
+        <MyMapComponent onMarkerClick={(timestamp) => playerRef.current.seek(timestamp)} />
+      </div>
+
+      {/* Keywords Section */}
+      <div >
+        <KeywordList currentPosition={currentPosition} />
+      </div>
     </div>
   );
 };
