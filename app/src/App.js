@@ -57,8 +57,7 @@ function App() {
       <header className="App-header">
         <div>
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">Video Reader</h1>
-          <Video clickedNumber={clickedNumber ?? 100} />
-          <Video />
+          <Video clickedNumber={clickedNumber} />
         </div>
         <div>
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">Chat</h1>
