@@ -58,3 +58,4 @@ Permet la composition et l'envoi de messages dans la chatroom. Certains messages
 Si vous souhaitez contribuer à ce projet, veuillez suivre les étapes suivantes :
 1. Clonez le dépôt.
 2. Installez les dépendances avec la commande `npm install`.
+3. Lancez le projet avec la commande `npm start`.
