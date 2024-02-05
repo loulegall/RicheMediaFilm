@@ -6,14 +6,15 @@ const ChapterList = ({ onChapterClick }) => {
 
   return (
     <div className="chapter-list bg-gray-100 p-4 rounded-md">
-      <h3 className="text-lg font-semibold mb-2">Chapters</h3>
-      <ul>
-        {Chapters.map((chapter) => (
-          <li 
+      <h3 className="keyword-list-title">Chapters</h3>
+      <ul className="horizontal-list">
+        {Chapters.map((chapter, index) => (
+          <li
             className="cursor-pointer hover:bg-gray-200 p-2 rounded-md transition duration-300"
-            key={chapter.pos} 
-            onClick={() => onChapterClick(chapter.pos)}>
-            {chapter.title}
+            key={chapter.pos}
+            onClick={() => onChapterClick(chapter.pos)}
+          >
+            <span className="chapter-number">{index + 1}.</span> {chapter.title}
           </li>
         ))}
       </ul>

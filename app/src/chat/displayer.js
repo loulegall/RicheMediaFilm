@@ -25,7 +25,7 @@ const Displayer = ({ messages, onNumberClick }) => {
       index % 2 === 0 ? (
         <span key={index}>{part}</span>
       ) : (
-        <button key={index} onClick={() => handleNumberClick(numberMatched)}>
+        <button className='button-displayer' key={index} onClick={() => handleNumberClick(numberMatched)}>
           {numberMatched}
         </button>
       )
@@ -36,19 +36,26 @@ const Displayer = ({ messages, onNumberClick }) => {
   };
 
   return (
-    <div>
-      <h2>Chat Messages</h2>
-      <ul>
+    <div className="chat-container">
+      <h2 className="keyword-list-title">Chat Messages</h2>
+      <ul className="message-list">
         {sortedMessages.map((message, index) => (
-          <li key={index}>
-            <strong>{message.name}: </strong>
-            <p>{renderClickableNumbers(message.message)}</p>
-            <p>{new Date(message.when).toLocaleString()}</p>
-            {message.content}
+          <li key={index} className="message-item">
+            <div className="message-header">
+              <strong className="message-sender">{message.name}</strong>
+              <span className="message-time">
+                {new Date(message.when).toLocaleString()}
+              </span>
+            </div>
+            <div className="message-content">
+              <p>{renderClickableNumbers(message.message)}</p>
+              <p>{message.content}</p>
+            </div>
           </li>
         ))}
       </ul>
     </div>
+
   );
 };
 export default Displayer;

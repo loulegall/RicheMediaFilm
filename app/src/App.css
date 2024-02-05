@@ -13,16 +13,106 @@
     transform: rotate(360deg);
   }
 }
-.video-container {
-  display: flex;
-  justify-content: space-between;
+
+.col-1{
+  width: 70%;
+  float: left;
+  padding-right: 1%;
 }
 
-.chapter-list {
-  height: 300px; 
-  overflow-y: auto;
+.col-2{
+  width: 30%;
+  float: right;
+  padding-left: 1%;
+}
+
+/* ------ Header ------ */
+.App-header{
+  background-color: #282c34; /* Couleur de fond du header */
+  color: white; /* Couleur du texte */
+  padding: 30px;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* ------ Body ------ */
+.App-body{
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+/* ------ Footer ------ */
+.App-footer {
+  background-color: #282c34; /* Couleur de fond du footer */
+  color: white; /* Couleur du texte */
   padding: 20px;
-  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info {
+  flex: 1;
+}
+
+.footer-info p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 40px;
+  background-color: white;
+}
+
+.footer-message {
+  flex: 1;
+}
+
+.footer-message p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+
+/* ------ Chapitres ------ */
+
+
+.chapter-list {
+  column-count: 3;
+  column-gap: 20px; 
+}
+
+.horizontal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horizontal-list li {
+  margin: 0 10px;
+}
+
+.chapter-number {
+  font-weight: bold !important;
+  margin-right: 5px; /* Ajustez la marge entre le numéro et le titre selon vos besoins */
+}
+
+.cursor-pointer{
+  margin: 0 10px;
+  display: block;
+  min-width: 100px;
 }
 
 .chapter-list h3 {
@@ -47,4 +137,152 @@
 .chapter-list li:hover {
   background-color: #e0e0e0;
 }
+
+/* ------ Map et Keywords ------ */
+
+.container-map-keywords {
+  display: flex;
+  margin: 20px auto;
+}
+
+.map-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.keywords-section {
+  flex: 1;
+}
+
+
+/* ------ Keywords ------ */
+.keyword-list {
+  max-width: 400px;
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.keyword-list-title {
+  font-size: 1.5rem !important;
+  color: #333 !important;
+  margin-bottom: 10px !important;
+  font-weight: bold;
+}
+
+.keyword-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.keyword-list-item {
+  margin-bottom: 8px;
+}
+
+.keyword-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.keyword-link:hover {
+  color: #0056b3;
+}
+
+
+/* ------ Chat ------*/
+.button-displayer{
+  background-color: #949494; /* Couleur de fond */
+  padding: 2px 5px; /* Espacement interne du bouton */
+  border-radius: 5px; /* Bordure arrondie */
+  margin: 5px;
+  font-weight: bold !important;
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.message-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.message-sender {
+  font-weight: bold;
+  color: #007bff; 
+}
+
+.message-time {
+  color: #888;
+}
+
+.message-content {
+  color: #333;
+}
+
+.send-message-container {
+  max-width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.send-message-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.message-form {
+  display: flex;
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.send-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
 

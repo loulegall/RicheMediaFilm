@@ -23,11 +23,11 @@ const KeywordList = ({ currentPosition }) => {
 
   return (
     <div className="keyword-list">
-      <h3>Keywords</h3>
-      <ul>
+      <h3 className="keyword-list-title">Keywords</h3>
+      <ul className="keyword-list-ul">
         {currentKeywords.map((keyword, index) => (
-          <li key={index}>
-            <a href={keyword.url}>
+          <li className="keyword-list-item" key={index}>
+            <a href={keyword.url} className="keyword-link">
               {keyword.title}
             </a>
           </li>

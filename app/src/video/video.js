@@ -11,6 +11,7 @@ import 'video-react/dist/video-react.css';
 const Video = ({ clickedNumber }) => {
   const playerRef = useRef(null);
   const [currentPosition, setCurrentPosition] = useState(0);
+  const [chatMessages, setChatMessages] = useState([]);
 
   const getFilmURL = () => {
     return data.Film.file_url;
@@ -32,20 +33,23 @@ const Video = ({ clickedNumber }) => {
   return (
     <div >
       {/* Video Player Section */}
-      <div>
-        <Player ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate}>
+      <div className='container-video-chapters'>
+        <Player className='video-container' ref={playerRef} playsInline src={getFilmURL()} onTimeUpdate={handleTimeUpdate} style={{ height: 'auto' }}>
         </Player>
-        <ChapterList onChapterClick={(pos) => playerRef.current.seek(pos)} />
+        <div className='chapter-container'>
+          <ChapterList onChapterClick={(pos) => playerRef.current.seek(pos)} />
+        </div>
       </div>
 
       {/* Map Section */}
-      <div>
-        <MyMapComponent onMarkerClick={(timestamp) => playerRef.current.seek(timestamp)} />
-      </div>
-
-      {/* Keywords Section */}
-      <div >
-        <KeywordList currentPosition={currentPosition} />
+      <div className='container-map-keywords'>
+        <div className="map-container">
+          <MyMapComponent onMarkerClick={(timestamp) => playerRef.current.seek(timestamp)} />
+        </div>
+        {/* Keywords Section */}
+        <div className="keywords-section">
+          <KeywordList currentPosition={currentPosition} />
+        </div>
       </div>
     </div>
   );

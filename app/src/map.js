@@ -30,7 +30,7 @@ const MyMapComponent = ({ onMarkerClick }) => {
   const center = calculateCenter(markers);
 
   return (
-    <MapContainer center={center} zoom={3} scrollWheelZoom={false} style={{ height: '400px', width: '700px' }}>
+    <MapContainer center={center} zoom={3} scrollWheelZoom={false} style={{ height: '400px', width: '700px', filter: 'grayscale(100%)', borderRadius:'5px'}}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -46,8 +46,6 @@ const MyMapComponent = ({ onMarkerClick }) => {
           <Popup>
             <div>
               <h3>{marker.label}</h3>
-              <p>Latitude: {marker.position[0]}</p>
-              <p>Longitude: {marker.position[1]}</p>
             </div>
           </Popup>
         </Marker>
