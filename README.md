@@ -23,3 +23,37 @@ moment du film,
 - Un component chargé d'afficher la chatroom associé à la vidéo,
 - Un component chargé de composer et poster des messages dans la chatroom. Certains
 messages permettent de partager des "moments d'intérêt" de la vidéo.
+
+## Technologies Utilisées
+
+### Video-React
+La librairie [Video-React](https://video-react.js.org/) est utilisée pour la lecture de la vidéo. Elle fournit une interface utilisateur réactive et des fonctionnalités avancées pour la gestion de la vidéo.
+
+### Leaflet
+La librairie [Leaflet](https://leafletjs.com/) est employée pour créer une carte interactive, permettant aux utilisateurs de visualiser les lieux du film. Les points d'intérêt sur la carte sont associés à des moments spécifiques du film, offrant une expérience immersive.
+
+## Structure du Projet
+Le projet est structuré en plusieurs composants principaux :
+
+### Video Component
+Gère la lecture de la vidéo et permet à l'utilisateur de naviguer à travers les chapitres du film.
+
+### ChapterList Component
+Affiche les chapitres du film sous forme de liste. Le clic sur un chapitre positionne la vidéo au moment correspondant.
+
+### Map Component
+Utilise Leaflet pour créer une carte interactive présentant les points d'intérêt liés aux moments spécifiques du film.
+
+### KeywordList Component
+Affiche une liste dynamique de mots-clés correspondant à différents moments du film.
+
+### Chatroom Component
+Permet aux utilisateurs de discuter et de partager des moments clés du film. Les messages peuvent inclure des liens redirigeant vers des moments spécifiques de la vidéo.
+
+### Sender Component
+Permet la composition et l'envoi de messages dans la chatroom. Certains messages peuvent inclure des "moments d'intérêt" de la vidéo.
+
+## Installation
+Si vous souhaitez contribuer à ce projet, veuillez suivre les étapes suivantes :
+1. Clonez le dépôt.
+2. Installez les dépendances avec la commande `npm install`.
