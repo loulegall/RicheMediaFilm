@@ -1,17 +1,21 @@
 // sender.js
 import React, { useState } from 'react';
 
-const Sender = ({ submitMessage }) => {
+const Sender = ({ submitMessage, ws }) => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Utilisez la fonction submitMessage avec le nouveau format d'envoi
-    submitMessage(message);
-    
-    // Réinitialisez le champ de message
-    setMessage('');
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      // Utilisez la fonction submitMessage avec le nouveau format d'envoi
+      submitMessage(message);
+      
+      // Réinitialisez le champ de message
+      setMessage('');
+    } else {
+      console.error("WebSocket is not open.");
+    }
   };
 
   return (

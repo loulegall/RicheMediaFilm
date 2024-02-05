@@ -67,7 +67,7 @@ function App() {
         </div>
         <div className='col-2'>
           <Displayer messages={chatMessages} onNumberClick={handleNumberClick} />
-          <Sender submitMessage={submitChatMessage} />
+          <Sender submitMessage={submitChatMessage} ws={ws}/>
         </div>
       </body>
       <footer className="App-footer">

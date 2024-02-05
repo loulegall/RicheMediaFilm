@@ -35,11 +35,13 @@ const Displayer = ({ messages, onNumberClick }) => {
     onNumberClick(number);
   };
 
+  const slicedMessages = sortedMessages.slice(0, 6);
+
   return (
     <div className="chat-container">
       <h2 className="keyword-list-title">Chat Messages</h2>
       <ul className="message-list">
-        {sortedMessages.map((message, index) => (
+        {slicedMessages.map((message, index) => (
           <li key={index} className="message-item">
             <div className="message-header">
               <strong className="message-sender">{message.name}</strong>
@@ -55,7 +57,6 @@ const Displayer = ({ messages, onNumberClick }) => {
         ))}
       </ul>
     </div>
-
   );
 };
 export default Displayer;
